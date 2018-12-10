@@ -181,6 +181,82 @@ template <typename SrcT, typename DrcT> DrcT c_style_cast(SrcT v)
 
 template <int i> class A {};
 
+/*
+
+template <int i> class A
+{
+public:
+	void foo(int)
+	{
+	}
+};
+template <uint8_t a, typename b, void* c> class B {};
+template <bool, void (*a)()> class C {};
+template <void (A<3>::*a)(int)> class D {};
+
+template <int i> int Add(int a)	// 当然也能用于函数模板
+{
+	return a + i;
+}
+
+void foo()
+{
+	A<5> a;
+	B<7, A<5>, nullptr>	b; // 模板参数可以是一个无符号八位整数，可以是模板生成的类；可以是一个指针。
+	C<false, &foo> c; // 模板参数可以是一个bool类型的常量，甚至可以是一个函数指针。
+	D<&A<3>::foo> d; // 丧心病狂啊！它还能是一个成员函数指针！
+	int x = Add<3>(5); // x == 8。因为整型模板参数无法从函数参数获得，所以只能是手工指定啦。
+}
+
+template <float a> class E {}; // ERROR: 别闹！早说过只能是整数类型的啦！
+
+
+
+*/
+
+
+
+/*
+	2. 模板元编程基础
+	当然也许你觉得这样做能充分体会代码行数增长的成就感。但是有一天，你突然发现：呀，Find 函数实现有问题了。怎么办？这个时候也许你只有两份这样的代码，那好说，一一去修正就好了。如果你有十个呢？二十个？五十个？
+
+	时间一长，你就厌倦了这样的生活。你觉得每个堆栈都差不多，但是又有点不一样。为了这一点点不一样，你付出了太多的时间。吃饭的时间，泡妞的时间，睡觉的时间，看岛国小电影顺便练习小臂力量的时间。
+
+	于是便诞生了新的技术，来消解我们的烦恼。
+
+	这个技术的名字，并不叫“模板”，而是叫“元编程”。
+
+	元（meta）无论在中文还是英文里，都是个很“抽象（abstract）”的词。因为它的本意就是“抽象”。
+	元编程，也可以说就是“编程的抽象”。用更好理解的说法，元编程意味着你撰写一段程序A，程序A会运行后生成另外一个程序B，程序B才是真正实现功能的程序。
+	那么这个时候程序A可以称作程序B的元程序，撰写程序A的过程，就称之为“元编程”。
+
+*/
+
+template<typename T>
+class Stack
+{
+public:
+	void push(T v);
+	T pop();
+	T find(T x)
+	{
+		for (int i = 0; i < size; ++i)
+		{
+			if (data[i] == x) { return i; }
+		}
+	}
+
+};
+
+typedef Stack<int> StackInt;
+typedef Stack<float> StackFloat;
+
+/*
+	通过模板，我们可以将形形色色的堆栈代码分为两个部分，一个部分是不变的接口，以及近乎相同的实现；另外一部分是元素的类型，它们是需要变化的。因此同函数类似，需要变化的部分，由模板参数来反应；不变的部分，则是模板内的代码。可以看到，使用模板的代码，要比不使用模板的代码简洁许多。
+
+	如果元编程中所有的变化的量（或者说元编程的参数），都是类型，那么这样的编程，我们有个特定的称呼，叫“泛型”。
+*/
+
 int main(int argc, char* argv[])
 {
 	test1();
@@ -200,7 +276,7 @@ int main(int argc, char* argv[])
 	float i = c_style_cast<int, float>(v);
 
 	int x = 3;
-	A<5> a_; // 正确！
+	A<5> a_; // 正确！  正常用typename的话 A<T>
 
 	
 
