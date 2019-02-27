@@ -26,5 +26,8 @@
     <ClInclude Include="..\Example\example1.h">
       <Filter>源文件\Example</Filter>
     </ClInclude>
+    <ClInclude Include="..\Example\example2.h">
+      <Filter>源文件\Example</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
