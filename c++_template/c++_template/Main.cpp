@@ -285,3 +285,35 @@ int main(int argc, char* argv[])
 	return 0;
 }
 
+
+//class ATest
+//{
+//public:
+//	ATest(){};
+//	virtual ~ATest(){
+//		int a = 10;
+//	}
+//};
+//
+//
+//class BTest :public ATest
+//{
+//public:
+//	virtual ~BTest(){
+//		int b = 10;
+//	}
+//
+//};
+//
+//int main(int argc, char* argv[])
+//{
+//
+//
+//	ATest *t = new BTest();
+//	delete t;
+//
+//	system("pause");
+//
+//	return 0;
+//}
+
