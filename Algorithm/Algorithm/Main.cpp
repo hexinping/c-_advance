@@ -6,7 +6,7 @@ using namespace std;
 #include "example1.h"
 #include "example2.h"
 #include "example136.h"
-
+#include "example169.h"
 
 
 int main(int argc, char* argv[])
@@ -33,9 +33,15 @@ int main(int argc, char* argv[])
 	//ListNode * r = outList(sum);
 
 
-	//***************example3
-	vector<int> vec = { 4, 1, 2, 1, 2 };
-	int result = singleNumber1(vec);
+	//***************example136
+	//vector<int> vec = { 4, 1, 2, 1, 2 };
+	//int result = singleNumber1(vec);
+
+	//majorityElement
+	//***************example169
+	vector<int> vec = { 3, 2, 3 };
+	int result = majorityElement(vec);
+
 
 
 	system("pause");
