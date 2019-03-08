@@ -54,7 +54,7 @@ int main(int argc, char* argv[])
 		{ 18, 21, 23, 26, 30}
 	};
 	
-	bool result = searchMatrix1(matrix, 5);
+	bool result = searchMatrix(matrix, 5);
 
 	system("pause");
 
