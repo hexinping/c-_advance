@@ -7,6 +7,7 @@ using namespace std;
 #include "example2.h"
 #include "example136.h"
 #include "example169.h"
+#include "example240.h"
 
 
 int main(int argc, char* argv[])
@@ -37,12 +38,23 @@ int main(int argc, char* argv[])
 	//vector<int> vec = { 4, 1, 2, 1, 2 };
 	//int result = singleNumber1(vec);
 
-	//majorityElement
+	
 	//***************example169
-	vector<int> vec = { 3, 2, 3 };
-	int result = majorityElement(vec);
+	//vector<int> vec = { 3, 2, 3 };
+	//int result = majorityElement(vec);
 
 
+	//***************example240
+
+	vector<vector<int>> matrix = {
+		{ 1, 4, 7, 11, 15 },
+		{ 2, 5, 8, 12, 19 },
+		{ 3, 6, 9, 16, 22 },
+		{ 10, 13, 14, 17, 24},
+		{ 18, 21, 23, 26, 30}
+	};
+	
+	bool result = searchMatrix1(matrix, 5);
 
 	system("pause");
 
