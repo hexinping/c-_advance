@@ -74,6 +74,7 @@
     <ClInclude Include="..\Example\example2.h" />
     <ClInclude Include="..\Example\example240.h" />
     <ClInclude Include="example88.h" />
+    <ClInclude Include="example887.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
