@@ -61,16 +61,14 @@ bool isPalindrome(string s)
     
     while(p1<p2)
     {
-        if(*p1==*p2 || (*p1<*p2 && *p1==(*p2-32)) ||(*p1>*p2 && *p1==(*p2+32)))
+        if(*p1!=*p2 && abs(*p1-*p2)!=32)
         {
-            p1++;
-            p2--;
-        }
-        else
-        {
+            
             result = false;
             break;
         }
+        p1++;
+        p2--;
         
     }
     return result;
