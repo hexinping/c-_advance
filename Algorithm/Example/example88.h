@@ -1,18 +1,18 @@
 /*
 
-¸ø¶¨Á½¸öÓĞĞòÕûÊıÊı×é nums1 ºÍ nums2£¬½« nums2 ºÏ²¢µ½ nums1 ÖĞ£¬Ê¹µÃ num1 ³ÉÎªÒ»¸öÓĞĞòÊı×é¡£
+ç»™å®šä¸¤ä¸ªæœ‰åºæ•´æ•°æ•°ç»„ nums1 å’Œ nums2ï¼Œå°† nums2 åˆå¹¶åˆ° nums1 ä¸­ï¼Œä½¿å¾— num1 æˆä¸ºä¸€ä¸ªæœ‰åºæ•°ç»„ã€‚
 
-ËµÃ÷:
+è¯´æ˜:
 
-³õÊ¼»¯ nums1 ºÍ nums2 µÄÔªËØÊıÁ¿·Ö±ğÎª m ºÍ n¡£
-Äã¿ÉÒÔ¼ÙÉè nums1 ÓĞ×ã¹»µÄ¿Õ¼ä£¨¿Õ¼ä´óĞ¡´óÓÚ»òµÈÓÚ m + n£©À´±£´æ nums2 ÖĞµÄÔªËØ¡£
-Ê¾Àı:
+åˆå§‹åŒ– nums1 å’Œ nums2 çš„å…ƒç´ æ•°é‡åˆ†åˆ«ä¸º m å’Œ nã€‚
+ä½ å¯ä»¥å‡è®¾ nums1 æœ‰è¶³å¤Ÿçš„ç©ºé—´ï¼ˆç©ºé—´å¤§å°å¤§äºæˆ–ç­‰äº m + nï¼‰æ¥ä¿å­˜ nums2 ä¸­çš„å…ƒç´ ã€‚
+ç¤ºä¾‹:
 
-ÊäÈë:
+è¾“å…¥:
 nums1 = [1,2,3,0,0,0], m = 3
 nums2 = [2,5,6],       n = 3
 
-Êä³ö: [1,2,2,3,5,6]
+è¾“å‡º: [1,2,2,3,5,6]
 
 */
 
@@ -50,14 +50,14 @@ void quickSort(vector<int>& a, int left, int right)
 		if (i <= j)
 		{
 			swapNum(a, i, j);
-			//ÎªÏÂÒ»´ÎÑ­»·×ö×¼±¸
+			//ä¸ºä¸‹ä¸€æ¬¡å¾ªç¯åšå‡†å¤‡
 			i++;
 			j--;
 		}
 
 	} while (i<=j);
 
-	if (left < j) //µİ¹é×ó±ß
+	if (left < j) //é€’å½’å·¦è¾¹
 	{
 		quickSort(a, left, j);
 	}
@@ -71,7 +71,7 @@ void quickSort(vector<int>& a, int left, int right)
 
 vector<int> merge(vector<int>& nums1, int m, vector<int>& nums2, int n)
 {
-	//×é×°³ÉÒ»¸ö´óÊı×é,strcopy?? todo
+	//ç»„è£…æˆä¸€ä¸ªå¤§æ•°ç»„,strcopy?? todo
 	std::vector<int> _array;
 	for (int i = 0; i < m + n;i++)
 	{
@@ -85,7 +85,7 @@ vector<int> merge(vector<int>& nums1, int m, vector<int>& nums2, int n)
 		}
 	}
 
-	//Ê¹ÓÃ¿ìÅÅÅÅĞò
+	//ä½¿ç”¨å¿«æ’æ’åº
 	int left = 0;
 	int right = _array.size() - 1;
 	

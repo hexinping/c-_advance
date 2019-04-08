@@ -1,81 +1,110 @@
 
 /*
+ç»™å‡ºä¸¤ä¸ª éç©º çš„é“¾è¡¨ç”¨æ¥è¡¨ç¤ºä¸¤ä¸ªéè´Ÿçš„æ•´æ•°ã€‚å…¶ä¸­ï¼Œå®ƒä»¬å„è‡ªçš„ä½æ•°æ˜¯æŒ‰ç…§ é€†åº çš„æ–¹å¼å­˜å‚¨çš„ï¼Œå¹¶ä¸”å®ƒä»¬çš„æ¯ä¸ªèŠ‚ç‚¹åªèƒ½å­˜å‚¨ ä¸€ä½ æ•°å­—ã€‚
 
+å¦‚æœï¼Œæˆ‘ä»¬å°†è¿™ä¸¤ä¸ªæ•°ç›¸åŠ èµ·æ¥ï¼Œåˆ™ä¼šè¿”å›ä¸€ä¸ªæ–°çš„é“¾è¡¨æ¥è¡¨ç¤ºå®ƒä»¬çš„å’Œã€‚
 
-¸ø¶¨Ò»¸ö·Ç¿ÕÕûÊıÊı×é£¬³ıÁËÄ³¸öÔªËØÖ»³öÏÖÒ»´ÎÒÔÍâ£¬ÆäÓàÃ¿¸öÔªËØ¾ù³öÏÖÁ½´Î¡£ÕÒ³öÄÇ¸öÖ»³öÏÖÁËÒ»´ÎµÄÔªËØ¡£
+æ‚¨å¯ä»¥å‡è®¾é™¤äº†æ•°å­— 0 ä¹‹å¤–ï¼Œè¿™ä¸¤ä¸ªæ•°éƒ½ä¸ä¼šä»¥ 0 å¼€å¤´ã€‚
 
-ËµÃ÷£º
+ç¤ºä¾‹ï¼š
 
-ÄãµÄËã·¨Ó¦¸Ã¾ßÓĞÏßĞÔÊ±¼ä¸´ÔÓ¶È¡£ Äã¿ÉÒÔ²»Ê¹ÓÃ¶îÍâ¿Õ¼äÀ´ÊµÏÖÂğ£¿
-
-Ê¾Àı 1:
-
-ÊäÈë: [2,2,1]
-Êä³ö: 1
-Ê¾Àı 2:
-
-ÊäÈë: [4,1,2,1,2]
-Êä³ö: 4
-
-class Solution {
-public:
-int singleNumber(vector<int>& nums) {
-
-}
-};
+è¾“å…¥ï¼š(2 -> 4 -> 3) + (5 -> 6 -> 4)
+è¾“å‡ºï¼š7 -> 0 -> 8
+åŸå› ï¼š342 + 465 = 807
 
 */
 
 #include <iostream>
 using namespace std;
 
-#include <vector>
-#include <map>
 
-//»ù´¡Ëã·¨ ÓÃÁ½¸ömapÌá¸ßĞ§ÂÊ
-int singleNumber(vector <int> &nums)
+/*
+æ€è·¯:
+	1 ç»„æˆä¸¤ä¸ªé“¾è¡¨ï¼Œç„¶åæŠŠå„è‡ªçš„æ•°ç›¸åŠ 
+	2 æœ€åå€’åºç»„æˆä¸€ä¸ªæ–°é“¾è¡¨
+
+*/
+
+//struct ListNode {
+//	int val;
+//	ListNode *next;
+//	ListNode(int x) : val(x), next(NULL) {}
+//
+//};
+#include <iostream>
+#include <vector>
+using namespace std;
+
+struct ListNode
 {
-	int result = 0;
-	map <int, int> _map;
-	map<int, int> _mapRes;
-	bool isCan = false;
-	for (int i = 0; i < nums.size();i++)
+	int val;
+	ListNode *next;
+};
+
+
+
+ListNode * createList(vector<int> vec)
+{
+	int length = vec.size();
+	ListNode *p = nullptr;
+	ListNode *s = nullptr;
+	ListNode *head = nullptr;
+	int count = 0;
+	while (length>0)
 	{
-		int value = nums[i];
-		if (_map.find(value) == _map.end())
+		s = new ListNode();
+		s->val = vec[count];
+		if (head == nullptr)
 		{
-			//Ã»ÓĞ¾Í´æÏÂ
-			_map[value] = 1;
+			head = s;
 		}
 		else
 		{
-			//¼ÇÂ¼´ÎÊı
-			_map[value] = _map[value] + 1;
-
-			//É¾³ıÖØ¸´ÔªËØ
-			_mapRes.erase(value);
+			p->next = s;
 		}
-		if (_map[value] == 1)
-		{
-			_mapRes[value] = value;
-		}
+		p = s;
+		length--;
+		count++;
 	}
+	p->next = nullptr;
+	if (nullptr != head)
+		cout << "åˆ›å»ºæˆåŠŸï¼" << endl;
+	else
+		cout << "æ²¡æœ‰æ•°æ®è¾“å…¥ï¼" << endl;
+	return head;
+}
 
-	map<int, int>::iterator it;
-	it = _mapRes.begin();
-	result = it->first;
-	
-
+// è¿”å›é“¾è¡¨ä¸Šæ•°å­—ä»£è¡¨çš„æ€»æ•°ï¼Œé€†åºè¾“å‡º
+int getTotalNum(ListNode *p)
+{
+	int result = 0;
+	int count = 0;
+	while (p!=nullptr)
+	{
+		int val = p->val;
+		result += (val % 10)* pow(10,count);
+		count++;
+		p = p->next;
+	}
 	return result;
 }
 
-//Òì»ò£ºÏàÍ¬Îª0£¬²»Í¬Îª1. Òì»òÍ¬Ò»¸öÊıÁ½´Î£¬Ô­Êı²»±ä¡£
-int singleNumber1(vector <int> &nums)
+ListNode *outList(int number)
 {
-	int len = nums.size();
+	// å…ˆé€†åºè¾“å‡ºåˆ°vector 807->708
+	vector<int> vec;
+	
+	// æ–¹æ³•1:è½¬æˆsting
+	// æ–¹æ³•2:è¾“å‡ºæ¯ä¸ªä½ä¸Šçš„æ•°å­—
 	int result = 0;
-	for (int i = 0; i < len; i++){
-		result ^= nums[i];
+	while (number)
+	{
+		result = (number % 10);
+		vec.push_back(result);
+		number /= 10;
+
 	}
-	return result;
+
+	ListNode *p = createList(vec);
+	return p;
 }
