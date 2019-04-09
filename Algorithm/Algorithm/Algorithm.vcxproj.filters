@@ -38,10 +38,16 @@
     <ClInclude Include="..\Example\example240.h">
       <Filter>源文件\Example</Filter>
     </ClInclude>
-    <ClInclude Include="example88.h">
+    <ClInclude Include="..\Example\example887.h">
       <Filter>源文件\Example</Filter>
     </ClInclude>
-    <ClInclude Include="example887.h">
+    <ClInclude Include="..\Example\example139.h">
+      <Filter>源文件\Example</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Example\example88.h">
+      <Filter>源文件\Example</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Example\example125.h">
       <Filter>源文件\Example</Filter>
     </ClInclude>
   </ItemGroup>

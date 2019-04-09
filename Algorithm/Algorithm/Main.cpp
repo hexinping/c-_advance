@@ -7,6 +7,7 @@ using namespace std;
 #include "example2.h"
 #include "example88.h"
 #include "example136.h"
+#include "example139.h"
 #include "example169.h"
 #include "example240.h"
 
@@ -60,10 +61,16 @@ int main(int argc, char* argv[])
 	//system("pause");
 
 	//***************example88
-	std::vector<int> nums1 = { 1, 2, 3, 9,1,45,0, 0, 0 };
-	std::vector<int> nums2 = { 2, 5, 6 };
-	std::vector<int> result = merge(nums1, 6, nums2, 3);
+	//std::vector<int> nums1 = { 1, 2, 3, 9,1,45,0, 0, 0 };
+	//std::vector<int> nums2 = { 2, 5, 6 };
+	//std::vector<int> result = merge(nums1, 6, nums2, 3);
 
+
+	//***************example139
+
+	string mainStr = "applepenapple";
+	vector<string> wordDict = {"apple", "pen" };
+	bool   result = wordBreak(mainStr, wordDict);
 
 	return 0;
 }
