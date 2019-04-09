@@ -68,9 +68,9 @@ ListNode * createList(vector<int> vec)
 	}
 	p->next = nullptr;
 	if (nullptr != head)
-		cout << "创建成功！" << endl;
+		cout << "创建成功" << endl;
 	else
-		cout << "没有数据输入！" << endl;
+		cout << "没有数据输入" << endl;
 	return head;
 }
 

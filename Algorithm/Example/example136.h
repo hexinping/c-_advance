@@ -1,110 +1,81 @@
 
 /*
-给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
-
-如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。
-
-您可以假设除了数字 0 之外，这两个数都不会以 0 开头。
-
-示例：
-
-输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
-输出：7 -> 0 -> 8
-原因：342 + 465 = 807
-
-*/
-
-#include <iostream>
-using namespace std;
 
 
-/*
-思路:
-	1 组成两个链表，然后把各自的数相加
-	2 最后倒序组成一个新链表
+给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
 
-*/
+说明：
 
-//struct ListNode {
-//	int val;
-//	ListNode *next;
-//	ListNode(int x) : val(x), next(NULL) {}
-//
-//};
-#include <iostream>
-#include <vector>
-using namespace std;
+你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？
 
-struct ListNode
-{
-	int val;
-	ListNode *next;
+示例 1:
+
+输入: [2,2,1]
+输出: 1
+示例 2:
+
+输入: [4,1,2,1,2]
+输出: 4
+
+class Solution {
+public:
+int singleNumber(vector<int>& nums) {
+
+}
 };
 
+*/
 
+#include <iostream>
+using namespace std;
 
-ListNode * createList(vector<int> vec)
+#include <vector>
+#include <map>
+
+//基础算法 用两个map提高效率
+int singleNumber(vector <int> &nums)
 {
-	int length = vec.size();
-	ListNode *p = nullptr;
-	ListNode *s = nullptr;
-	ListNode *head = nullptr;
-	int count = 0;
-	while (length>0)
+	int result = 0;
+	map <int, int> _map;
+	map<int, int> _mapRes;
+	bool isCan = false;
+	for (int i = 0; i < nums.size();i++)
 	{
-		s = new ListNode();
-		s->val = vec[count];
-		if (head == nullptr)
+		int value = nums[i];
+		if (_map.find(value) == _map.end())
 		{
-			head = s;
+			//没有就存下
+			_map[value] = 1;
 		}
 		else
 		{
-			p->next = s;
-		}
-		p = s;
-		length--;
-		count++;
-	}
-	p->next = nullptr;
-	if (nullptr != head)
-		cout << "创建成功！" << endl;
-	else
-		cout << "没有数据输入！" << endl;
-	return head;
-}
+			//记录次数
+			_map[value] = _map[value] + 1;
 
-// 返回链表上数字代表的总数，逆序输出
-int getTotalNum(ListNode *p)
-{
-	int result = 0;
-	int count = 0;
-	while (p!=nullptr)
-	{
-		int val = p->val;
-		result += (val % 10)* pow(10,count);
-		count++;
-		p = p->next;
+			//删除重复元素
+			_mapRes.erase(value);
+		}
+		if (_map[value] == 1)
+		{
+			_mapRes[value] = value;
+		}
 	}
+
+	map<int, int>::iterator it;
+	it = _mapRes.begin();
+	result = it->first;
+	
+
 	return result;
 }
 
-ListNode *outList(int number)
+//异或：相同为0，不同为1. 异或同一个数两次，原数不变。
+int singleNumber1(vector <int> &nums)
 {
-	// 先逆序输出到vector 807->708
-	vector<int> vec;
-	
-	// 方法1:转成sting
-	// 方法2:输出每个位上的数字
+	int len = nums.size();
 	int result = 0;
-	while (number)
-	{
-		result = (number % 10);
-		vec.push_back(result);
-		number /= 10;
-
+	for (int i = 0; i < len; i++){
+		result ^= nums[i];
 	}
-
-	ListNode *p = createList(vec);
-	return p;
+	return result;
 }
