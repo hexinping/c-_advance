@@ -6,6 +6,7 @@ using namespace std;
 #include "example1.h"
 #include "example2.h"
 #include "example88.h"
+#include "example131.h"
 #include "example136.h"
 #include "example139.h"
 #include "example169.h"
@@ -68,9 +69,12 @@ int main(int argc, char* argv[])
 
 	//***************example139
 
-	string mainStr = "applepenapple";
-	vector<string> wordDict = {"apple", "pen" };
-	bool   result = wordBreak(mainStr, wordDict);
+	//string mainStr = "applepenapple";
+	//vector<string> wordDict = {"apple", "pen" };
+	//bool   result = wordBreak(mainStr, wordDict);
+
+
+	//***************example131
 
 	return 0;
 }

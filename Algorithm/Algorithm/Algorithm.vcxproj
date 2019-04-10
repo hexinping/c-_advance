@@ -70,6 +70,7 @@
   <ItemGroup>
     <ClInclude Include="..\Example\example1.h" />
     <ClInclude Include="..\Example\example125.h" />
+    <ClInclude Include="..\Example\example131.h" />
     <ClInclude Include="..\Example\example136.h" />
     <ClInclude Include="..\Example\example139.h" />
     <ClInclude Include="..\Example\example169.h" />

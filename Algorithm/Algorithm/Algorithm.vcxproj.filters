@@ -50,5 +50,8 @@
     <ClInclude Include="..\Example\example125.h">
       <Filter>源文件\Example</Filter>
     </ClInclude>
+    <ClInclude Include="..\Example\example131.h">
+      <Filter>源文件\Example</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
