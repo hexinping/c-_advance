@@ -60,7 +60,7 @@ class Solution:
             node = ListNode(flag % 10)
             node.next = head
             head = node
-            flag = flag // 10
+            flag = flag // 10   //这里应该是flag = flag/10
         return head
 ```
 
