@@ -13,6 +13,13 @@ using namespace std;
 #include "example240.h"
 
 
+int a = 0;
+
+int testRet()
+{
+	return a++;  //先返回a 再++，跟= 一样       ++a同理，先++再返回a
+}
+
 int main(int argc, char* argv[])
 {
 
@@ -75,6 +82,13 @@ int main(int argc, char* argv[])
 
 
 	//***************example131
+
+	for (int i = 0; i < 10;i++)
+	{
+		int j = testRet();
+		cout << "j===========" << j << endl;
+	}
+
 
 	return 0;
 }

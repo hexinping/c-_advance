@@ -45,14 +45,16 @@ using namespace std;
 #include <vector>
 #include <map>
 
-vector<vector<string>> partition(string s) 
-{
-        vector<vector<string>> ans;
-        if (s.empty()) return ans;
-        vector<string> temp;
-        dfs(ans, s, temp, 0);
-        return ans;
- }
+
+//判断是否是回文串
+bool is_pali(string &s, int left, int right) {
+	if (left == right || left > right)
+		return true;
+	if (s[left] == s[right])
+		return is_pali(s, left + 1, right - 1);
+	else return false;
+}
+
     
  void dfs(vector<vector<string>> &ans, string &s, vector<string> &temp, int left) 
  {
@@ -70,11 +72,13 @@ vector<vector<string>> partition(string s)
     }
  }
 
-//判断是否是回文串
-bool is_pali(string &s, int left, int right) {
-    if (left == right || left > right) 
-        return true;
-    if (s[left] == s[right])
-        return is_pali(s, left + 1, right - 1);
-    else return false;
-}
+ vector<vector<string>> partition(string s)
+ {
+	 vector<vector<string>> ans;
+	 if (s.empty()) return ans;
+	 vector<string> temp;
+	 dfs(ans, s, temp, 0);
+	 return ans;
+ }
+
+
