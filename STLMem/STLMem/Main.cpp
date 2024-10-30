@@ -39,7 +39,7 @@ using namespace std;
 		}
 */
 
-int main(int argc, char* argv[])
+void STLTest()
 {
 	//cout << "test==========" << endl;
 
@@ -69,7 +69,7 @@ int main(int argc, char* argv[])
 
 	//对象删除需要重载==方法，指针不需要
 	//listP.remove(p); // 会自动调用对象的析构函数
-	
+
 	//list<Person>::iterator itList = listP.begin();
 	//for (; itList != listP.end(); ++itList) {
 	//	if (itList->m_name == "hexinping") {
@@ -97,7 +97,7 @@ int main(int argc, char* argv[])
 
 
 	////////////////////////////////////////////////////元素为指针
-	Person *pc = new Person(29, "hexinping");
+	Person* pc = new Person(29, "hexinping");
 
 	// A vector测试
 	//vector<Person*> vec;
@@ -154,7 +154,30 @@ int main(int argc, char* argv[])
 	//}
 
 	//mapP.clear(); //会自动调用对象的析构函数
+}
 
+void TestStuctMemSzie()
+{
+	struct student {
+		int num;
+		char name[20];
+		char gender;
+	};
+	student s = { 10, "asd", 'M' };
+	cout << s.num << endl;
+	cout << sizeof(s.num) << endl;
+	/*
+	sizeof(s.name)输出的是name数组的总大小，而不是数组的单个元素的大小。
+	name是一个char[20]数组，占据20个字节（每个char占1字节，20个char总共20字节）。因此，sizeof(s.name)返回20
+	*/
+	cout << sizeof(s.name) << endl;
+	cout << sizeof(s.gender) << endl;
+	cout << sizeof(s) << endl;
+}
+int main(int argc, char* argv[])
+{
+	//STLTest();
+	TestStuctMemSzie();
 	system("Pause");
 	return 0;
 }
